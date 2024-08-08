@@ -13,13 +13,12 @@
         <a href="/posts/create">create</a>
         <div class="posts">
             @foreach($posts as $post)
-                <div class="post">
+                <div class="past">
                     <a href="/posts/{{ $post->id }}">
                         <h2 class="title">
                             {{ $post->title }}
                         </h2>
                     </a>
-                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class="body">{{ $post->body }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                         @csrf
@@ -29,6 +28,7 @@
                 </div>
             @endforeach
         </div>
+        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
